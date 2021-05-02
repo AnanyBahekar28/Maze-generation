@@ -1,0 +1,56 @@
+import random
+
+
+def rand():
+    rm = [[random.randint(0, 1) for e in range(8)] for e in range(8)]
+    for x in v:
+        rm[x[0]][x[1]] = 1
+
+    return rm
+
+v = [[0, 0]]
+
+rm=rand()
+rm[0][0] = 1
+rm[7][7] = 1
+'''print('Original matrix')
+for z in rm:
+    print(z)
+'''
+#cnt=0
+i = 0
+j = 0
+
+while not (i == 7 and j == 7):
+    #if(cnt<5):
+    #print(' okay? i ',i,'  j ',j)
+    if (j+1<=7) and (rm[i][j + 1] == 1):
+        #print('first if mdhe ala')
+        v.append([i, j + 1])
+        j = j + 1
+    elif (i+1<=7) and (rm[i + 1][j] == 1):
+        #print('2nd if mdhe ala')
+        v.append([i + 1, j])
+        i = i + 1
+    elif (j-1>=0) and (rm[i][j - 1] == 1) and list([i,j-1]) not in v:
+        #print("3rd condition mdhe alo")
+        v.append([i, j - 1])
+
+    elif(i-1>=0) and rm[i - 1][j] == 1 and list([i-1, j]) not in v:
+        #print("4th condition mdhe alo")
+        v.append([i - 1, j])
+
+    else:
+        #print('Randomize mdhe alo')
+        rm = rand()
+
+        #print('Random new :')
+        '''for x in rm:
+            print(x)
+        
+    cnt+=1
+    if(cnt<5):
+        print('i = ',i,' j = ',j,'  ',v)
+    '''
+for x in rm:
+    print(x)
