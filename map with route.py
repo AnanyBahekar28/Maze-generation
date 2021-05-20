@@ -24,7 +24,7 @@ for b in range(8):
         number = number + 1
     x = 0
     y = y + 75
-targetcell = 64
+targetcell = 34
 startcell = 1
 currentcell = 1
 randomlist = []
@@ -65,11 +65,6 @@ while currentcell != targetcell:
                 if choic == cell1:
                     blacknum.remove(randomlist[i])
 
-    for i in range(len(pathlist)):
-        if ((pathlist[i]) % 8) > 0:
-            screen.blit(cell1, ((((pathlist[i]) % 8) * 75) - 75, ((((int((pathlist[i]) / 8)) + 1) * 75) - 75)))
-        else:
-            screen.blit(cell1, (((int((pathlist[i]) / 8)) * 75) - 75, ((((pathlist[i]) % 8) * 75) - 75)))
 print(pathlist)
 for i in range(len(pathlist)):
     if ((pathlist[i]) % 8) > 0:
