@@ -1,0 +1,56 @@
+import pygame
+import random
+
+def disp(x):
+    pygame.init()
+    screen = pygame.display.set_mode((400, 400))
+    pygame.display.set_caption("8x8 Arena")
+    block = pygame.image.load("Images/1.png")
+    start = pygame.image.load("Images/2.png")
+    target = pygame.image.load("Images/3.png")
+    op = pygame.image.load("Images/4.png")
+    pygame.display.update()
+    screen.blit(start, (0, 0))
+    screen.blit(target, (350, 350))
+    for i in range(0, 7):
+        for j in range(0, 7):
+            if not (i == 0 and j == 0) and not (i == 7 and j == 7):
+
+                p = 50 * i
+                q = 50 * j
+                if x[i][j] == 0:
+                    screen.blit(block, (p, q))
+                if x[i][j] == 1:
+                    screen.blit(op, (p, q))
+    while True:
+        pygame.display.update()
+
+def rand():
+    rm = [[random.randint(0, 1) for e in range(8)] for e in range(8)]
+    for x in v:
+        rm[x[0]][x[1]] = 1
+    return rm
+v = [[0, 0]]
+rm=rand()
+rm[0][0] = 1
+rm[7][7] = 1
+i = 0
+j = 0
+while not (i == 7 and j == 7):
+    if (j+1<=7) and (rm[i][j + 1] == 1):
+        v.append([i, j + 1])
+        j = j + 1
+    elif (i+1<=7) and (rm[i + 1][j] == 1):
+        v.append([i + 1, j])
+        i = i + 1
+    elif (j-1>=0) and (rm[i][j - 1] == 1) and list([i,j-1]) not in v:
+        v.append([i, j - 1])
+
+    elif(i-1>=0) and rm[i - 1][j] == 1 and list([i-1, j]) not in v:
+        v.append([i - 1, j])
+
+    else:
+        rm = rand()
+for x in rm:
+    print(x)
+disp(rm)
