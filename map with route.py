@@ -77,12 +77,4 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-    '''
-    for i in range(len(pathlist)):
-        if ((pathlist[i]) % 8) > 0:
-            screen.blit(targetcel, ((((pathlist[i]) % 8) * 75) - 75, ((((int((pathlist[i]) / 8)) + 1) * 75) - 75)))
-        else:
-            screen.blit(targetcel, ((((pathlist[i]) % 8) * 75) - 75, (((int((pathlist[i]) / 8)) * 75) - 75)))
-        pygame.display.update()
-        time.sleep(0.5)
-    '''
+            
